@@ -144,7 +144,6 @@ namespace MiniGameServer
             string method = receiveDataDict["method"].ToString();
             Dictionary<string, object> sendDataDict = new Dictionary<string, object>();
             string sender = receiveDataDict["sender"].ToString();
-            AddLog(sender);
 
             switch (method)
             {
@@ -153,7 +152,7 @@ namespace MiniGameServer
                     string input_id = receiveDataDict["input_id"].ToString();
                     string input_pw = receiveDataDict["input_pw"].ToString();
                     string sql = $"SELECT * FROM table_user WHERE id = \"{input_id}\" AND password = \"{input_pw}\";";
-                    if (DBManager.GetDataCount(sql) > 0)
+                    if (DBManager.GetDataCount(sql) <= 0)
                     {
                         sendDataDict.Add("result", false);
                     }
@@ -168,10 +167,8 @@ namespace MiniGameServer
 
             foreach (TcpClient client in clientList)
             {
-                //AddLog(client.Client.RemoteEndPoint.ToString());
                 if (client.Client.RemoteEndPoint.ToString() == sender)
                 {
-                    AddLog("asdf");
                     SendData(client, sendDataDict);
                 }
             }

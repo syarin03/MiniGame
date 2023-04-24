@@ -41,12 +41,12 @@
             // 
             this.InputLoginID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.InputLoginID.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.InputLoginID.Location = new System.Drawing.Point(228, 148);
+            this.InputLoginID.Location = new System.Drawing.Point(140, 140);
             this.InputLoginID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.InputLoginID.MinimumSize = new System.Drawing.Size(1, 16);
             this.InputLoginID.Name = "InputLoginID";
             this.InputLoginID.ShowText = false;
-            this.InputLoginID.Size = new System.Drawing.Size(174, 29);
+            this.InputLoginID.Size = new System.Drawing.Size(200, 30);
             this.InputLoginID.TabIndex = 0;
             this.InputLoginID.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.InputLoginID.Watermark = "";
@@ -55,12 +55,12 @@
             // 
             this.InputLoginPW.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.InputLoginPW.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.InputLoginPW.Location = new System.Drawing.Point(228, 187);
+            this.InputLoginPW.Location = new System.Drawing.Point(140, 180);
             this.InputLoginPW.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.InputLoginPW.MinimumSize = new System.Drawing.Size(1, 16);
             this.InputLoginPW.Name = "InputLoginPW";
             this.InputLoginPW.ShowText = false;
-            this.InputLoginPW.Size = new System.Drawing.Size(174, 29);
+            this.InputLoginPW.Size = new System.Drawing.Size(200, 30);
             this.InputLoginPW.TabIndex = 3;
             this.InputLoginPW.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.InputLoginPW.Watermark = "";
@@ -69,10 +69,10 @@
             // 
             this.BtnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnLogin.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.BtnLogin.Location = new System.Drawing.Point(410, 148);
+            this.BtnLogin.Location = new System.Drawing.Point(350, 140);
             this.BtnLogin.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnLogin.Name = "BtnLogin";
-            this.BtnLogin.Size = new System.Drawing.Size(100, 68);
+            this.BtnLogin.Size = new System.Drawing.Size(100, 70);
             this.BtnLogin.TabIndex = 4;
             this.BtnLogin.Text = "로그인";
             this.BtnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
@@ -84,7 +84,7 @@
             this.BtnLoginToSignUp.BackColor = System.Drawing.Color.Transparent;
             this.BtnLoginToSignUp.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.BtnLoginToSignUp.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.BtnLoginToSignUp.Location = new System.Drawing.Point(387, 293);
+            this.BtnLoginToSignUp.Location = new System.Drawing.Point(340, 280);
             this.BtnLoginToSignUp.Name = "BtnLoginToSignUp";
             this.BtnLoginToSignUp.Size = new System.Drawing.Size(65, 19);
             this.BtnLoginToSignUp.TabIndex = 5;
@@ -99,7 +99,7 @@
             this.BtnLoginToFind.BackColor = System.Drawing.Color.Transparent;
             this.BtnLoginToFind.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.BtnLoginToFind.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.BtnLoginToFind.Location = new System.Drawing.Point(387, 327);
+            this.BtnLoginToFind.Location = new System.Drawing.Point(340, 310);
             this.BtnLoginToFind.Name = "BtnLoginToFind";
             this.BtnLoginToFind.Size = new System.Drawing.Size(146, 19);
             this.BtnLoginToFind.TabIndex = 5;
@@ -112,7 +112,7 @@
             this.uiLabel1.AutoSize = true;
             this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel1.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.uiLabel1.Location = new System.Drawing.Point(224, 293);
+            this.uiLabel1.Location = new System.Drawing.Point(170, 280);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(168, 19);
             this.uiLabel1.TabIndex = 6;
@@ -124,7 +124,7 @@
             this.uiLabel2.AutoSize = true;
             this.uiLabel2.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel2.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.uiLabel2.Location = new System.Drawing.Point(179, 327);
+            this.uiLabel2.Location = new System.Drawing.Point(125, 310);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(213, 19);
             this.uiLabel2.TabIndex = 6;
@@ -134,7 +134,7 @@
             // FormLogin
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 450);
             this.Controls.Add(this.uiLabel2);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.BtnLoginToFind);
@@ -144,7 +144,7 @@
             this.Controls.Add(this.InputLoginID);
             this.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormLogin";
-            this.Text = "";
+            this.Text = "로그인";
             this.TitleFont = new System.Drawing.Font("나눔바른고딕", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.ResumeLayout(false);

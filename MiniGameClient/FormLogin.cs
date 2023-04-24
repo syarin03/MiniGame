@@ -37,7 +37,7 @@ namespace MiniGameClient
                 sendDataDict = new Dictionary<string, object>
                 {
                     { "method", "Login" },
-                    { "sender", clientManager },
+                    { "sender", clientManager.client.Client.LocalEndPoint },
                     { "input_id", input_id },
                     { "input_pw", input_pw }
                 };

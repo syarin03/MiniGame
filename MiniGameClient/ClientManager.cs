@@ -15,7 +15,7 @@ namespace MiniGameClient
 {
     public class ClientManager
     {
-        public TcpClient server;
+        public TcpClient client;
         NetworkStream networkStream;
         public bool isConnect = false;
 
@@ -33,9 +33,11 @@ namespace MiniGameClient
         {
             try
             {
-                server = new TcpClient("127.0.0.1", 2869);
-                networkStream = server.GetStream();
+                client = new TcpClient("127.0.0.1", 2869);
+                networkStream = client.GetStream();
                 isConnect = true;
+
+                Console.WriteLine(client.Client.LocalEndPoint);
             }
             catch (Exception ex)
             {
@@ -75,8 +77,8 @@ namespace MiniGameClient
                 {
                     BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-                    byte[] buffer = new byte[server.ReceiveBufferSize];
-                    int bytesRead = networkStream.Read(buffer, 0, server.ReceiveBufferSize);
+                    byte[] buffer = new byte[client.ReceiveBufferSize];
+                    int bytesRead = networkStream.Read(buffer, 0, client.ReceiveBufferSize);
                     memoryStream.Write(buffer, 0, bytesRead);
                     memoryStream.Position = 0;
 
