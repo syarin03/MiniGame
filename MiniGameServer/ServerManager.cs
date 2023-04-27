@@ -144,14 +144,15 @@ namespace MiniGameServer
             string method = receiveDataDict["method"].ToString();
             Dictionary<string, object> sendDataDict = new Dictionary<string, object>();
             string sender = receiveDataDict["sender"].ToString();
+            string sql;
 
             switch (method)
             {
                 case "Login":
                     sendDataDict.Add("method", "LoginResult");
-                    string input_id = receiveDataDict["input_id"].ToString();
-                    string input_pw = receiveDataDict["input_pw"].ToString();
-                    string sql = $"SELECT * FROM table_user WHERE id = \"{input_id}\" AND password = \"{input_pw}\";";
+                    string input_login_id = receiveDataDict["input_id"].ToString();
+                    string input_login_pw = receiveDataDict["input_pw"].ToString();
+                    sql = $"SELECT * FROM table_user WHERE id = \"{input_login_id}\" AND password = \"{input_login_pw}\";";
                     if (DBManager.GetDataCount(sql) <= 0)
                     {
                         sendDataDict.Add("result", false);
@@ -159,6 +160,19 @@ namespace MiniGameServer
                     else
                     {
                         sendDataDict.Add("result", true);
+                    }
+                    break;
+                case "CheckID":
+                    sendDataDict.Add("method", "CheckIDResult");
+                    string input_check_id = receiveDataDict["input_id"].ToString();
+                    sql = $"SELECT * FROM table_user WHERE id = \"{input_check_id}\";";
+                    if (DBManager.GetDataCount(sql) <= 0)
+                    {
+                        sendDataDict.Add("result", true);
+                    }
+                    else
+                    {
+                        sendDataDict.Add("result", false);
                     }
                     break;
                 default:

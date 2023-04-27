@@ -35,13 +35,16 @@
             // 
             // LogHistory
             // 
+            this.LogHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LogHistory.FillColor = System.Drawing.Color.White;
-            this.LogHistory.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.LogHistory.Font = new System.Drawing.Font("나눔바른고딕", 8F);
             this.LogHistory.Location = new System.Drawing.Point(4, 40);
             this.LogHistory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.LogHistory.MinimumSize = new System.Drawing.Size(1, 1);
             this.LogHistory.Name = "LogHistory";
             this.LogHistory.Padding = new System.Windows.Forms.Padding(2);
+            this.LogHistory.ReadOnly = true;
             this.LogHistory.ShowText = false;
             this.LogHistory.Size = new System.Drawing.Size(792, 309);
             this.LogHistory.TabIndex = 0;
@@ -50,25 +53,25 @@
             // BtnServerStop
             // 
             this.BtnServerStop.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnServerStop.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.BtnServerStop.Font = new System.Drawing.Font("나눔바른고딕", 12F);
             this.BtnServerStop.Location = new System.Drawing.Point(696, 357);
             this.BtnServerStop.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnServerStop.Name = "BtnServerStop";
             this.BtnServerStop.Size = new System.Drawing.Size(100, 35);
             this.BtnServerStop.TabIndex = 3;
-            this.BtnServerStop.Text = "uiButton1";
+            this.BtnServerStop.Text = "서버 중지";
             this.BtnServerStop.Click += new System.EventHandler(this.BtnServerStop_Click);
             // 
             // BtnServerStart
             // 
             this.BtnServerStart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnServerStart.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.BtnServerStart.Font = new System.Drawing.Font("나눔바른고딕", 12F);
             this.BtnServerStart.Location = new System.Drawing.Point(4, 357);
             this.BtnServerStart.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnServerStart.Name = "BtnServerStart";
             this.BtnServerStart.Size = new System.Drawing.Size(100, 35);
             this.BtnServerStart.TabIndex = 4;
-            this.BtnServerStart.Text = "uiButton2";
+            this.BtnServerStart.Text = "서버 시작";
             this.BtnServerStart.Click += new System.EventHandler(this.BtnServerStart_Click);
             // 
             // FormServer
@@ -78,8 +81,10 @@
             this.Controls.Add(this.BtnServerStop);
             this.Controls.Add(this.BtnServerStart);
             this.Controls.Add(this.LogHistory);
+            this.Font = new System.Drawing.Font("나눔바른고딕", 12F);
             this.Name = "FormServer";
-            this.Text = "Form1";
+            this.Text = "서버";
+            this.TitleFont = new System.Drawing.Font("나눔바른고딕", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.ResumeLayout(false);
 

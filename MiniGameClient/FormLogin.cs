@@ -21,13 +21,16 @@ namespace MiniGameClient
         {
             InitializeComponent();
             clientManager = cm;
+            TitleBar.TitleName = "로그인";
+            UILocalizeHelper.SetEN();
+            clientManager.FormLogin = this;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             if (InputLoginID.Text == "" || InputLoginPW.Text == "")
             {
-                UIMessageBox.ShowWarning("아이디 또는 비밀번호 입력을 확인해주세요");
+                UIMessageBox.ShowWarning("아이디 또는 비밀번호 입력을 확인해주세요", false);
             }
             else
             {
@@ -37,13 +40,20 @@ namespace MiniGameClient
                 sendDataDict = new Dictionary<string, object>
                 {
                     { "method", "Login" },
-                    { "sender", clientManager.client.Client.LocalEndPoint },
+                    { "sender", clientManager.clientIP },
                     { "input_id", input_id },
                     { "input_pw", input_pw }
                 };
 
                 clientManager.SendData(sendDataDict);
             }
+        }
+
+        private void BtnLoginToSignUp_Click(object sender, EventArgs e)
+        {
+            FormSignUp formSignUp = new FormSignUp(clientManager);
+            clientManager.FormSignUp = formSignUp;
+            formSignUp.ShowDialog();
         }
     }
 }

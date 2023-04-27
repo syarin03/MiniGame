@@ -15,9 +15,14 @@ namespace MiniGameClient
 {
     public class ClientManager
     {
+        public bool isConnect = false;
+        public string clientIP;
+
         public TcpClient client;
         NetworkStream networkStream;
-        public bool isConnect = false;
+
+        public FormSignUp FormSignUp { get; set; }
+        public FormLogin FormLogin { get; set; }
 
         public ClientManager()
         {
@@ -37,7 +42,9 @@ namespace MiniGameClient
                 networkStream = client.GetStream();
                 isConnect = true;
 
-                Console.WriteLine(client.Client.LocalEndPoint);
+                clientIP = client.Client.LocalEndPoint.ToString();
+
+                Console.WriteLine(clientIP);
             }
             catch (Exception ex)
             {
@@ -93,14 +100,29 @@ namespace MiniGameClient
                         case "LoginResult":
                             if (!(bool)receiveDataDict["result"])
                             {
-                                UIMessageBox.Show("아이디 또는 비밀번호가 일치하지 않습니다");
+                                UIMessageBox.Show("아이디 또는 비밀번호가 일치하지 않습니다", false);
                             }
                             else
                             {
-                                UIMessageBox.Show("로그인 성공");
+                                UIMessageBox.Show("로그인 성공", false);
                             }
                             break;
-
+                        case "CheckIDResult":
+                            if (!(bool)receiveDataDict["result"])
+                            {
+                                FormSignUp.Invoke((MethodInvoker)delegate ()
+                                {
+                                    FormSignUp.LabelSignUpID.Text = "이미 사용 중인 아이디";
+                                });
+                            }
+                            else
+                            {
+                                FormSignUp.Invoke((MethodInvoker)delegate ()
+                                {
+                                    FormSignUp.LabelSignUpID.Text = "사용 가능한 아이디";
+                                });
+                            }
+                            break;
                         default:
                             break;
                     }
