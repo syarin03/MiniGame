@@ -1,5 +1,4 @@
-﻿using Sunny.UI;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,15 +22,16 @@ namespace MiniGameClient
             ParentForm.Close();
         }
 
-        public string TitleName
+        public string FormName
         {
             get
             {
-                return LabelTitleName.Text;
+                return TitleName.Text;
             }
+
             set
             {
-                LabelTitleName.Text = value;
+                TitleName.Text = value;
             }
         }
     }

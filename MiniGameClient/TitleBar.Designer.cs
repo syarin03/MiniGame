@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LabelTitleName = new Sunny.UI.UIPanel();
+            this.TitleName = new Sunny.UI.UILabel();
             this.BtnClose = new Sunny.UI.UISymbolButton();
             this.SuspendLayout();
             // 
-            // LabelTitleName
+            // TitleName
             // 
-            this.LabelTitleName.FillColor = System.Drawing.Color.Transparent;
-            this.LabelTitleName.FillColor2 = System.Drawing.Color.Transparent;
-            this.LabelTitleName.FillDisableColor = System.Drawing.Color.Transparent;
-            this.LabelTitleName.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LabelTitleName.ForeColor = System.Drawing.Color.White;
-            this.LabelTitleName.ForeDisableColor = System.Drawing.Color.White;
-            this.LabelTitleName.Location = new System.Drawing.Point(5, 0);
-            this.LabelTitleName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.LabelTitleName.MinimumSize = new System.Drawing.Size(1, 1);
-            this.LabelTitleName.Name = "LabelTitleName";
-            this.LabelTitleName.RectColor = System.Drawing.Color.Transparent;
-            this.LabelTitleName.RectDisableColor = System.Drawing.Color.Transparent;
-            this.LabelTitleName.Size = new System.Drawing.Size(300, 35);
-            this.LabelTitleName.Style = Sunny.UI.UIStyle.Custom;
-            this.LabelTitleName.TabIndex = 0;
-            this.LabelTitleName.Text = "TitleName";
-            this.LabelTitleName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TitleName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TitleName.BackColor = System.Drawing.Color.Transparent;
+            this.TitleName.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Bold);
+            this.TitleName.ForeColor = System.Drawing.Color.White;
+            this.TitleName.Location = new System.Drawing.Point(0, 0);
+            this.TitleName.Margin = new System.Windows.Forms.Padding(0);
+            this.TitleName.Name = "TitleName";
+            this.TitleName.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.TitleName.Size = new System.Drawing.Size(600, 35);
+            this.TitleName.Style = Sunny.UI.UIStyle.Custom;
+            this.TitleName.StyleCustomMode = true;
+            this.TitleName.TabIndex = 0;
+            this.TitleName.Text = "Form";
+            this.TitleName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BtnClose
             // 
+            this.BtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnClose.BackColor = System.Drawing.Color.Transparent;
             this.BtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnClose.FillColor = System.Drawing.Color.Transparent;
             this.BtnClose.FillColor2 = System.Drawing.Color.Transparent;
@@ -61,7 +61,7 @@
             this.BtnClose.FillHoverColor = System.Drawing.Color.Transparent;
             this.BtnClose.FillPressColor = System.Drawing.Color.Transparent;
             this.BtnClose.FillSelectedColor = System.Drawing.Color.Transparent;
-            this.BtnClose.Font = new System.Drawing.Font("나눔바른고딕", 12F);
+            this.BtnClose.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
             this.BtnClose.Location = new System.Drawing.Point(565, 0);
             this.BtnClose.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnClose.Name = "BtnClose";
@@ -79,10 +79,12 @@
             // 
             // TitleBar
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Controls.Add(this.BtnClose);
-            this.Controls.Add(this.LabelTitleName);
+            this.Controls.Add(this.TitleName);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "TitleBar";
             this.Size = new System.Drawing.Size(600, 35);
@@ -91,7 +93,8 @@
         }
 
         #endregion
+
+        private Sunny.UI.UILabel TitleName;
         private Sunny.UI.UISymbolButton BtnClose;
-        private Sunny.UI.UIPanel LabelTitleName;
     }
 }

@@ -1,18 +1,15 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sunny.UI;
 
 namespace MiniGameClient
 {
-    public partial class FormLogin : UIForm
+    public partial class FormLogin : MiniGameClient.CustomForm
     {
         ClientManager clientManager;
         Dictionary<string, object> sendDataDict;
@@ -21,25 +18,25 @@ namespace MiniGameClient
         {
             InitializeComponent();
             clientManager = cm;
-            TitleBar.TitleName = "로그인";
             UILocalizeHelper.SetEN();
             clientManager.FormLogin = this;
+            Console.WriteLine("asdf " + clientManager.FormLogin.ToString());
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            if (InputLoginID.Text == "" || InputLoginPW.Text == "")
+            if (InputID.Text == "" || InputPW.Text == "")
             {
                 UIMessageBox.ShowWarning("아이디 또는 비밀번호 입력을 확인해주세요", false);
             }
             else
             {
-                string input_id = InputLoginID.Text;
-                string input_pw = InputLoginPW.Text;
+                string input_id = InputID.Text;
+                string input_pw = InputPW.Text;
 
                 sendDataDict = new Dictionary<string, object>
                 {
-                    { "method", "Login" },
+                    { "method", "LogIn" },
                     { "sender", clientManager.clientIP },
                     { "input_id", input_id },
                     { "input_pw", input_pw }
@@ -54,6 +51,14 @@ namespace MiniGameClient
             FormSignUp formSignUp = new FormSignUp(clientManager);
             clientManager.FormSignUp = formSignUp;
             formSignUp.ShowDialog();
+        }
+
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (clientManager.player == null)
+            {
+                Application.Exit();
+            }
         }
     }
 }

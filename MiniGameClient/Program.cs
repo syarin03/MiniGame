@@ -28,7 +28,11 @@ namespace MiniGameClient
 
                 if (clientManager.isConnect)
                 {
-                    Application.Run(new FormLogin(clientManager));
+                    FormLogin formLogin = new FormLogin(clientManager);
+                    if (formLogin.ShowDialog() == DialogResult.OK)
+                    {
+                        Application.Run(new FormLobby(clientManager));
+                    }
                     break;
                 }
                 else

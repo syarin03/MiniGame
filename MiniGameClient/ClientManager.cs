@@ -1,14 +1,11 @@
 ﻿using Sunny.UI;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MiniGameClient
@@ -16,13 +13,17 @@ namespace MiniGameClient
     public class ClientManager
     {
         public bool isConnect = false;
-        public string clientIP;
+        public EndPoint clientIP;
 
         public TcpClient client;
         NetworkStream networkStream;
 
+        public Player player;
+
         public FormSignUp FormSignUp { get; set; }
         public FormLogin FormLogin { get; set; }
+        public FormLobby FormLobby { get; set; }
+
 
         public ClientManager()
         {
@@ -42,13 +43,14 @@ namespace MiniGameClient
                 networkStream = client.GetStream();
                 isConnect = true;
 
-                clientIP = client.Client.LocalEndPoint.ToString();
+                clientIP = client.Client.LocalEndPoint;
 
                 Console.WriteLine(clientIP);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                UIMessageBox.ShowError("서버와의 연결이 끊겼습니다", false);
                 isConnect = false;
                 return;
             }
@@ -92,37 +94,89 @@ namespace MiniGameClient
                     Dictionary<string, object> receiveDataDict =
                         (Dictionary<string, object>)binaryFormatter.Deserialize(memoryStream);
 
-                    Console.WriteLine(receiveDataDict["method"]);
                     string method = receiveDataDict["method"].ToString();
+                    Console.WriteLine(method);
 
                     switch (method)
                     {
-                        case "LoginResult":
+                        case "LogInResult":
                             if (!(bool)receiveDataDict["result"])
                             {
                                 UIMessageBox.Show("아이디 또는 비밀번호가 일치하지 않습니다", false);
                             }
                             else
                             {
-                                UIMessageBox.Show("로그인 성공", false);
+                                List<object> value = (List<object>)receiveDataDict["value"];
+                                player = new Player(value);
+                                FormLogin.DialogResult = DialogResult.OK;
                             }
                             break;
+
                         case "CheckIDResult":
                             if (!(bool)receiveDataDict["result"])
                             {
                                 FormSignUp.Invoke((MethodInvoker)delegate ()
                                 {
-                                    FormSignUp.LabelSignUpID.Text = "이미 사용 중인 아이디";
+                                    FormSignUp.LabelID.Text = "이미 사용 중인 아이디입니다";
                                 });
+                                FormSignUp.isIDChecked = false;
                             }
                             else
                             {
                                 FormSignUp.Invoke((MethodInvoker)delegate ()
                                 {
-                                    FormSignUp.LabelSignUpID.Text = "사용 가능한 아이디";
+                                    FormSignUp.LabelID.Text = "사용 가능한 아이디입니다";
                                 });
+                                FormSignUp.isIDChecked = true;
                             }
                             break;
+
+                        case "CheckPhoneResult":
+                            if (!(bool)receiveDataDict["result"])
+                            {
+                                FormSignUp.Invoke((MethodInvoker)delegate ()
+                                {
+                                    FormSignUp.LabelPhone.Text = "이미 가입되어있는 전화번호입니다";
+                                });
+                                FormSignUp.isPhoneChecked = false;
+                            }
+                            else
+                            {
+                                FormSignUp.Invoke((MethodInvoker)delegate ()
+                                {
+                                    FormSignUp.LabelPhone.Text = string.Empty;
+                                });
+                                FormSignUp.isPhoneChecked = true;
+                            }
+                            break;
+
+                        case "CheckNickNameResult":
+                            if (!(bool)receiveDataDict["result"])
+                            {
+                                FormSignUp.Invoke((MethodInvoker)delegate ()
+                                {
+                                    FormSignUp.LabelNickName.Text = "이미 사용 중인 닉네임입니다";
+                                });
+                                FormSignUp.isNickNameChecked = false;
+                            }
+                            else
+                            {
+                                FormSignUp.Invoke((MethodInvoker)delegate ()
+                                {
+                                    FormSignUp.LabelNickName.Text = string.Empty;
+                                });
+                                FormSignUp.isNickNameChecked = true;
+                            }
+                            break;
+
+                        case "SignUpResult":
+                            UIMessageBox.ShowSuccess("회원가입을 완료했습니다", false);
+                            FormSignUp.Invoke((MethodInvoker)delegate ()
+                            {
+                                FormSignUp.DialogResult = DialogResult.OK;
+                            });
+                            break;
+
                         default:
                             break;
                     }

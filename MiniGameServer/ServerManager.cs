@@ -68,6 +68,9 @@ namespace MiniGameServer
             }
             listener.Stop();
 
+            listenerThread.Abort();
+            processThread.Abort();
+
             AddLog("Server Stop");
 
             isRun = false;
@@ -120,6 +123,7 @@ namespace MiniGameServer
                 catch (Exception)
                 {
                     AddLog($"Client \"{client.Client.RemoteEndPoint}\" Disconnect");
+
                     clientList.Remove(client);
                     client.Close();
                     client.Dispose();
@@ -127,6 +131,7 @@ namespace MiniGameServer
                 }
             }
         }
+
 
         private void ProcessReceiveData()
         {
@@ -142,46 +147,126 @@ namespace MiniGameServer
         {
             Dictionary<string, object> receiveDataDict = receiveDataQueue.Dequeue();
             string method = receiveDataDict["method"].ToString();
-            Dictionary<string, object> sendDataDict = new Dictionary<string, object>();
-            string sender = receiveDataDict["sender"].ToString();
-            string sql;
+            Console.WriteLine(method);
+            Dictionary<string, object> sendDataDict = new Dictionary<string, object>()
+            {
+                { "target", "public" }
+            };
+            EndPoint sender = (EndPoint)receiveDataDict["sender"];
+            StringBuilder sql;
 
             switch (method)
             {
-                case "Login":
-                    sendDataDict.Add("method", "LoginResult");
+                case "LogIn":
+                    sendDataDict["method"] = "LogInResult";
+                    sendDataDict["target"] = "private";
                     string input_login_id = receiveDataDict["input_id"].ToString();
                     string input_login_pw = receiveDataDict["input_pw"].ToString();
-                    sql = $"SELECT * FROM table_user WHERE id = \"{input_login_id}\" AND password = \"{input_login_pw}\";";
-                    if (DBManager.GetDataCount(sql) <= 0)
+                    sql = new StringBuilder(1024);
+                    sql.AppendLine($"SELECT * FROM table_user WHERE id = \"{input_login_id}\" AND password = \"{input_login_pw}\";");
+                    DataTable value = DBManager.GetDataTable(sql.ToString());
+                    if (value.Rows.Count <= 0)
                     {
-                        sendDataDict.Add("result", false);
+                        sendDataDict["result"] = false;
                     }
                     else
                     {
-                        sendDataDict.Add("result", true);
+                        sendDataDict["result"] = true;
+                        sendDataDict["value"] = value.Rows[0].ItemArray.ToList();
                     }
                     break;
+
                 case "CheckID":
-                    sendDataDict.Add("method", "CheckIDResult");
+                    sendDataDict["method"] = "CheckIDResult";
+                    sendDataDict["target"] = "private";
                     string input_check_id = receiveDataDict["input_id"].ToString();
-                    sql = $"SELECT * FROM table_user WHERE id = \"{input_check_id}\";";
-                    if (DBManager.GetDataCount(sql) <= 0)
+                    sql = new StringBuilder();
+                    sql.AppendLine($"SELECT * FROM table_user WHERE id = \"{input_check_id}\";");
+                    if (DBManager.GetDataCount(sql.ToString()) <= 0)
                     {
-                        sendDataDict.Add("result", true);
+                        sendDataDict["result"] = true;
                     }
                     else
                     {
-                        sendDataDict.Add("result", false);
+                        sendDataDict["result"] = false;
                     }
                     break;
+
+                case "CheckPhone":
+                    sendDataDict["method"] = "CheckPhoneResult";
+                    sendDataDict["target"] = "private";
+                    string input_check_phone = receiveDataDict["input_phone"].ToString();
+                    sql = new StringBuilder();
+                    sql.AppendLine($"SELECT * FROM table_user WHERE phone = \"{input_check_phone}\";");
+                    if (DBManager.GetDataCount(sql.ToString()) <= 0)
+                    {
+                        sendDataDict["result"] = true;
+                    }
+                    else
+                    {
+                        sendDataDict["result"] = false;
+                    }
+                    break;
+
+                case "CheckNickName":
+                    sendDataDict["method"] = "CheckNickNameResult";
+                    sendDataDict["target"] = "private";
+                    string input_check_nickname = receiveDataDict["input_nickname"].ToString();
+                    sql = new StringBuilder();
+                    sql.AppendLine($"SELECT * FROM table_user WHERE nickname = \"{input_check_nickname}\";");
+                    if (DBManager.GetDataCount(sql.ToString()) <= 0)
+                    {
+                        sendDataDict["result"] = true;
+                    }
+                    else
+                    {
+                        sendDataDict["result"] = false;
+                    }
+                    break;
+
+                case "SignUp":
+                    sendDataDict["method"] = "SignUpResult";
+                    sendDataDict["target"] = "private";
+                    List<string> values = (List<string>)receiveDataDict["values"];
+                    sql = new StringBuilder();
+                    sql.AppendLine($"INSERT INTO table_user (   ");
+                    sql.AppendLine($"   id,                     ");
+                    sql.AppendLine($"   password,               ");
+                    sql.AppendLine($"   name,                   ");
+                    sql.AppendLine($"   phone,                  ");
+                    sql.AppendLine($"   nickname                ");
+                    sql.AppendLine($")                          ");
+                    sql.AppendLine($"VALUES (                   ");
+                    sql.AppendLine($"   '{values[0]}',          ");
+                    sql.AppendLine($"   '{values[1]}',          ");
+                    sql.AppendLine($"   '{values[2]}',          ");
+                    sql.AppendLine($"   '{values[3]}',          ");
+                    sql.AppendLine($"   '{values[4]}'           ");
+                    sql.AppendLine($");                         ");
+                    DBManager.CommitData(sql.ToString());
+                    break;
+
                 default:
                     break;
             }
 
-            foreach (TcpClient client in clientList)
+            if (sendDataDict["target"].ToString() == "private")
             {
-                if (client.Client.RemoteEndPoint.ToString() == sender)
+
+                foreach (TcpClient c in clientList)
+                {
+                    Console.WriteLine(c.Client.RemoteEndPoint.ToString());
+                }
+                TcpClient target = clientList.FirstOrDefault(client => client.Client.RemoteEndPoint.ToString() == sender.ToString());
+                Console.WriteLine(target.Client.RemoteEndPoint);
+                if (target != null)
+                {
+                    SendData(target, sendDataDict);
+                }
+            }
+            else
+            {
+                foreach (TcpClient client in clientList)
                 {
                     SendData(client, sendDataDict);
                 }

@@ -28,50 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.InputLoginID = new Sunny.UI.UITextBox();
-            this.InputLoginPW = new Sunny.UI.UITextBox();
             this.BtnLogin = new Sunny.UI.UIButton();
-            this.BtnLoginToSignUp = new Sunny.UI.UILinkLabel();
-            this.BtnLoginToFind = new Sunny.UI.UILinkLabel();
+            this.InputPW = new Sunny.UI.UITextBox();
+            this.InputID = new Sunny.UI.UITextBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
+            this.BtnLoginToSignUp = new Sunny.UI.UILinkLabel();
+            this.BtnToFind = new Sunny.UI.UILinkLabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
-            this.TitleBar = new MiniGameClient.TitleBar();
             this.uiTableLayoutPanel1 = new Sunny.UI.UITableLayoutPanel();
             this.uiTableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // InputLoginID
-            // 
-            this.InputLoginID.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.InputLoginID.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.InputLoginID.Location = new System.Drawing.Point(150, 140);
-            this.InputLoginID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.InputLoginID.MinimumSize = new System.Drawing.Size(1, 16);
-            this.InputLoginID.Name = "InputLoginID";
-            this.InputLoginID.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.InputLoginID.ShowText = false;
-            this.InputLoginID.Size = new System.Drawing.Size(300, 30);
-            this.InputLoginID.Style = Sunny.UI.UIStyle.Custom;
-            this.InputLoginID.TabIndex = 0;
-            this.InputLoginID.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.InputLoginID.Watermark = "아이디";
-            // 
-            // InputLoginPW
-            // 
-            this.InputLoginPW.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.InputLoginPW.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.InputLoginPW.Location = new System.Drawing.Point(150, 180);
-            this.InputLoginPW.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.InputLoginPW.MinimumSize = new System.Drawing.Size(1, 16);
-            this.InputLoginPW.Name = "InputLoginPW";
-            this.InputLoginPW.PasswordChar = '*';
-            this.InputLoginPW.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.InputLoginPW.ShowText = false;
-            this.InputLoginPW.Size = new System.Drawing.Size(300, 30);
-            this.InputLoginPW.Style = Sunny.UI.UIStyle.Custom;
-            this.InputLoginPW.TabIndex = 3;
-            this.InputLoginPW.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.InputLoginPW.Watermark = "비밀번호";
             // 
             // BtnLogin
             // 
@@ -82,7 +48,7 @@
             this.BtnLogin.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.BtnLogin.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.BtnLogin.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.BtnLogin.Location = new System.Drawing.Point(150, 220);
+            this.BtnLogin.Location = new System.Drawing.Point(150, 205);
             this.BtnLogin.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnLogin.Name = "BtnLogin";
             this.BtnLogin.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -92,10 +58,58 @@
             this.BtnLogin.Size = new System.Drawing.Size(300, 40);
             this.BtnLogin.Style = Sunny.UI.UIStyle.Custom;
             this.BtnLogin.StyleCustomMode = true;
-            this.BtnLogin.TabIndex = 4;
+            this.BtnLogin.TabIndex = 15;
             this.BtnLogin.Text = "로그인";
             this.BtnLogin.TipsFont = new System.Drawing.Font("나눔바른고딕", 9F);
             this.BtnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
+            // 
+            // InputPW
+            // 
+            this.InputPW.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.InputPW.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.InputPW.Location = new System.Drawing.Point(150, 165);
+            this.InputPW.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.InputPW.MinimumSize = new System.Drawing.Size(1, 16);
+            this.InputPW.Name = "InputPW";
+            this.InputPW.PasswordChar = '*';
+            this.InputPW.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.InputPW.ShowText = false;
+            this.InputPW.Size = new System.Drawing.Size(300, 30);
+            this.InputPW.Style = Sunny.UI.UIStyle.Custom;
+            this.InputPW.TabIndex = 14;
+            this.InputPW.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InputPW.Watermark = "비밀번호";
+            // 
+            // InputID
+            // 
+            this.InputID.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.InputID.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.InputID.Location = new System.Drawing.Point(150, 125);
+            this.InputID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.InputID.MinimumSize = new System.Drawing.Size(1, 16);
+            this.InputID.Name = "InputID";
+            this.InputID.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.InputID.ShowText = false;
+            this.InputID.Size = new System.Drawing.Size(300, 30);
+            this.InputID.Style = Sunny.UI.UIStyle.Custom;
+            this.InputID.TabIndex = 13;
+            this.InputID.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InputID.Watermark = "아이디";
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiLabel1.AutoSize = true;
+            this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel1.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.uiLabel1.Location = new System.Drawing.Point(69, 0);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(168, 30);
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel1.TabIndex = 6;
+            this.uiLabel1.Text = "아직 회원이 아니신가요?";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BtnLoginToSignUp
             // 
@@ -120,41 +134,26 @@
             this.BtnLoginToSignUp.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.BtnLoginToSignUp.Click += new System.EventHandler(this.BtnLoginToSignUp_Click);
             // 
-            // BtnLoginToFind
+            // BtnToFind
             // 
-            this.BtnLoginToFind.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.BtnLoginToFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.BtnToFind.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BtnToFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnLoginToFind.AutoSize = true;
-            this.BtnLoginToFind.BackColor = System.Drawing.Color.Transparent;
-            this.BtnLoginToFind.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.BtnLoginToFind.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.BtnLoginToFind.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.BtnLoginToFind.Location = new System.Drawing.Point(243, 30);
-            this.BtnLoginToFind.Name = "BtnLoginToFind";
-            this.BtnLoginToFind.Size = new System.Drawing.Size(146, 30);
-            this.BtnLoginToFind.Style = Sunny.UI.UIStyle.Custom;
-            this.BtnLoginToFind.StyleCustomMode = true;
-            this.BtnLoginToFind.TabIndex = 5;
-            this.BtnLoginToFind.TabStop = true;
-            this.BtnLoginToFind.Text = "아이디/비밀번호 찾기";
-            this.BtnLoginToFind.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLoginToFind.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            // 
-            // uiLabel1
-            // 
-            this.uiLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.uiLabel1.AutoSize = true;
-            this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.uiLabel1.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.uiLabel1.Location = new System.Drawing.Point(69, 0);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(168, 30);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel1.TabIndex = 6;
-            this.uiLabel1.Text = "아직 회원이 아니신가요?";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnToFind.AutoSize = true;
+            this.BtnToFind.BackColor = System.Drawing.Color.Transparent;
+            this.BtnToFind.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.BtnToFind.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
+            this.BtnToFind.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.BtnToFind.Location = new System.Drawing.Point(243, 30);
+            this.BtnToFind.Name = "BtnToFind";
+            this.BtnToFind.Size = new System.Drawing.Size(146, 30);
+            this.BtnToFind.Style = Sunny.UI.UIStyle.Custom;
+            this.BtnToFind.StyleCustomMode = true;
+            this.BtnToFind.TabIndex = 5;
+            this.BtnToFind.TabStop = true;
+            this.BtnToFind.Text = "아이디/비밀번호 찾기";
+            this.BtnToFind.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnToFind.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             // 
             // uiLabel2
             // 
@@ -171,15 +170,6 @@
             this.uiLabel2.Text = "아이디/비밀번호를 잊으셨나요?";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // TitleBar
-            // 
-            this.TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.TitleBar.Location = new System.Drawing.Point(0, 0);
-            this.TitleBar.Margin = new System.Windows.Forms.Padding(0);
-            this.TitleBar.Name = "TitleBar";
-            this.TitleBar.Size = new System.Drawing.Size(600, 35);
-            this.TitleBar.TabIndex = 7;
-            // 
             // uiTableLayoutPanel1
             // 
             this.uiTableLayoutPanel1.ColumnCount = 2;
@@ -187,39 +177,28 @@
             this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.uiTableLayoutPanel1.Controls.Add(this.uiLabel1, 0, 0);
             this.uiTableLayoutPanel1.Controls.Add(this.BtnLoginToSignUp, 1, 0);
-            this.uiTableLayoutPanel1.Controls.Add(this.BtnLoginToFind, 1, 1);
+            this.uiTableLayoutPanel1.Controls.Add(this.BtnToFind, 1, 1);
             this.uiTableLayoutPanel1.Controls.Add(this.uiLabel2, 0, 1);
-            this.uiTableLayoutPanel1.Location = new System.Drawing.Point(100, 280);
+            this.uiTableLayoutPanel1.Location = new System.Drawing.Point(100, 265);
             this.uiTableLayoutPanel1.Name = "uiTableLayoutPanel1";
             this.uiTableLayoutPanel1.RowCount = 2;
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.uiTableLayoutPanel1.Size = new System.Drawing.Size(400, 60);
             this.uiTableLayoutPanel1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiTableLayoutPanel1.TabIndex = 8;
+            this.uiTableLayoutPanel1.TabIndex = 16;
             this.uiTableLayoutPanel1.TagString = null;
             // 
             // FormLogin
             // 
-            this.AllowShowTitle = false;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(600, 450);
-            this.Controls.Add(this.uiTableLayoutPanel1);
-            this.Controls.Add(this.TitleBar);
             this.Controls.Add(this.BtnLogin);
-            this.Controls.Add(this.InputLoginPW);
-            this.Controls.Add(this.InputLoginID);
-            this.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.InputPW);
+            this.Controls.Add(this.InputID);
+            this.Controls.Add(this.uiTableLayoutPanel1);
             this.Name = "FormLogin";
-            this.Padding = new System.Windows.Forms.Padding(0);
-            this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ShowTitle = false;
-            this.Style = Sunny.UI.UIStyle.Custom;
-            this.StyleCustomMode = true;
             this.Text = "로그인";
-            this.TitleFont = new System.Drawing.Font("나눔바른고딕", 12F);
-            this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             this.uiTableLayoutPanel1.ResumeLayout(false);
             this.uiTableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -228,15 +207,13 @@
 
         #endregion
 
-        private Sunny.UI.UITextBox InputLoginID;
-        private Sunny.UI.UITextBox InputLoginPW;
         private Sunny.UI.UIButton BtnLogin;
-        private Sunny.UI.UILinkLabel BtnLoginToSignUp;
-        private Sunny.UI.UILinkLabel BtnLoginToFind;
+        private Sunny.UI.UITextBox InputPW;
+        private Sunny.UI.UITextBox InputID;
         private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UILinkLabel BtnLoginToSignUp;
+        private Sunny.UI.UILinkLabel BtnToFind;
         private Sunny.UI.UILabel uiLabel2;
-        private TitleBar TitleBar;
         private Sunny.UI.UITableLayoutPanel uiTableLayoutPanel1;
     }
 }
-
